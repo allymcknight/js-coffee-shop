@@ -53,41 +53,9 @@
     myImage.setAttribute('src', "static/coffee_beans.jpg");
     var myRevenueMessage = document.getElementById("revenue");
 
-    function showMug(){
-        myImage.setAttribute('src', "static/coffee_mug.jpg");
-    }
-
-    function showBeans() {
-        myImage.setAttribute('src', "static/coffee_beans.jpg");
-    }
-
     var drinksOrdered = [];
 
-    function makeCoffee(drinkType){
-        drinksOrdered.push(drinkType);
-        console.log(drinksOrdered);
-        myImage.setAttribute('src', "static/coffee_machine.jpg");
-        setTimeout(showMug, 1000);
-        setTimeout(showBeans, 2500); //counts total time from function call
-        revenue(drinksOrdered);
-    }
-    
-    // myImage.addEventListener('click', function () {return makeCoffee('brew');});
-    // myImage.addEventListener('click', makeCoffee);
-    espresso.addEventListener('click', function () {return makeCoffee('espresso');});
-    latte.addEventListener('click', function () {return makeCoffee('latte');});
-    hotChocolate.addEventListener('click', function () {return makeCoffee('hot chocolate');});
-
-    function revenue(drinksOrder){
-        var totalRevenue;
-        for (i = 0; i<drinksOrder.length; i++){
-            totalRevenue += 
-        }
-
-        return totalRevenue;
-    }
-
-    // use this dictionary in further study step
+        // use this dictionary in further study step
 
     var prices = {
         "brew": 2.05,
@@ -96,7 +64,40 @@
         "hot chocolate": 2.50
     };
 
+    function showMug(){
+        myImage.setAttribute('src', "static/coffee_mug.jpg");
+    }
 
+    function showBeans() {
+        myImage.setAttribute('src', "static/coffee_beans.jpg");
+    }
+
+
+    function makeCoffee(drinkType){
+        drinksOrdered.push(drinkType);
+        console.log(drinksOrdered);
+        myImage.setAttribute('src', "static/coffee_machine.jpg");
+        setTimeout(showMug, 1000);
+        setTimeout(showBeans, 2500); //counts total time from function call
+        myRevenueMessage.innerText = "$" + revenue(drinksOrdered, prices);
+    }
+    
+    // myImage.addEventListener('click', function () {return makeCoffee('brew');});
+    // myImage.addEventListener('click', makeCoffee);
+    espresso.addEventListener('click', function () {return makeCoffee('espresso');});
+    latte.addEventListener('click', function () {return makeCoffee('latte');});
+    hotChocolate.addEventListener('click', function () {return makeCoffee('hot chocolate');});
+
+    function revenue(drinksOrder, prices){
+        var totalRevenue = 0;
+        for (i = 0; i<drinksOrder.length; i++){
+            totalRevenue += prices[drinksOrder[i]];
+        }
+
+        return totalRevenue.toFixed(2);
+    }
+
+   
 </script>
 
 </body>
