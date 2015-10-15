@@ -69,6 +69,7 @@
         myImage.setAttribute('src', "static/coffee_machine.jpg");
         setTimeout(showMug, 1000);
         setTimeout(showBeans, 2500); //counts total time from function call
+        revenue(drinksOrdered);
     }
     
     // myImage.addEventListener('click', function () {return makeCoffee('brew');});
@@ -77,7 +78,14 @@
     latte.addEventListener('click', function () {return makeCoffee('latte');});
     hotChocolate.addEventListener('click', function () {return makeCoffee('hot chocolate');});
 
+    function revenue(drinksOrder){
+        var totalRevenue;
+        for (i = 0; i<drinksOrder.length; i++){
+            totalRevenue += 
+        }
 
+        return totalRevenue;
+    }
 
     // use this dictionary in further study step
 
